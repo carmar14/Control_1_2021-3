@@ -34,7 +34,7 @@ tao_N = tao/(1+k)
 
 %-------------sistema de segundo orden---------
 k = 9;
-e = 10;
+e = 0.6;
 wn = 1;
 
 h=tf(k*wn^2,[1 2*e*wn wn^2]);

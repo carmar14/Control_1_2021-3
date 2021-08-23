@@ -26,37 +26,42 @@ pzmap(spo*za)
 %--------------segundo orden-------------
 e=0.3;
 wn=2;
-k=1;
+k=-3;
 sso=tf(k*wn^2,[1 2*e*wn wn^2]); 
 figure
 %subplot(3,1,1)
 step(sso,'k')
 
-e=0.7;
+wn = 1;
 sso=tf(k*wn^2,[1 2*e*wn wn^2]); 
 hold on
 step(sso,'r')
 
-e=0.1;
+wn = 3;
 sso=tf(k*wn^2,[1 2*e*wn wn^2]); 
 
 step(sso,'b')
 
+figure
 
 
-za = tf([11],1);  % probar con 10%, 5% 2%
-subplot(3,1,2)
-step(sso*za)
+za = tf([1/200 1],1);  % probar con 10%, 5% 2%
+pzmap(sso*za)
+%subplot(3,1,2)
+step(sso)
+hold on
+step(sso*za, '.r')
 
-pa = tf(1,[1/(0.6/5) 1]);
-subplot(3,1,3)
-step(sso*pa)
+pa = tf(1,[1/0.0009 1]);
+
+figure
+%subplot(3,1,3)
+step(sso)
+hold on
+step(sso*pa, '.r')
 
 figure
 pzmap(sso*za)
 
 
-figure
-step(sso)
-hold on
-step(sso*pa)
+
