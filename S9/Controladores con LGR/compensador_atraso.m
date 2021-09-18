@@ -70,7 +70,7 @@ e=pol(2)/(2*wn)
 
 
 %sistema completo realimentado
-sis_r_c=feedback(K*g_c*g,1);
+sis_r_c=feedback(K*g_c*g,1)
 figure
 step(gr,'b')
 hold on
@@ -78,4 +78,41 @@ step(sis_r_c,'k')
 title('Respuesta al escalon')
 legend('Sistema no compensado', 'Sistema compensado')
 
+
+%---------implementación de Gc con operacioneales----
+%Gc=K(s+z)/(s+p)
+z=0.05;
+p=0.005;
+C1=1000e-6;
+C2=C1;
+R1=1/(C1*0.05);
+R2=1/(C2*0.005);
+R3=10e3;
+R4=K*R3;
+
+% funcion de trasnferencia del controlador con los parametros del
+% operacional
+g_cao= tf((R4*C1/(R3*C2))*[1 1/(R1*C1)],[1 1/(R2*C2)]);
+SR=feedback(g_cao*g,1);
+figure
+step(SR,'k')
+hold on
+step(gr,'b')
+title('Respuesta al escalon-Controlador implementado con operacionales')
+legend('Sistema compensado', 'Sistema no compensado')
+
+
+
+%--------- parametros para la simulacion con operacionales---
+R1=10e3;
+R2=R1;
+R3=R1;
+R4=R1;
+
+C1=1000e-6;
+C2=C1;
+R1c=1/(C1*0.05);
+R2c=1/(C2*0.005);
+R3c=10e3;
+R4c=K*R3;
 
