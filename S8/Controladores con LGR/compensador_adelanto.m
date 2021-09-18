@@ -28,8 +28,8 @@ div=abs(num/den);
 %K=5.061;
 K=1/div;
 sc=K*ol; % sistema completo en lazo abierto
-cl=feedback(sc,1); % sistema compensado en lazo cerrado
-sis=feedback(g,1) % sistema sin compensador en lazo cerrado
+cl=feedback(sc,1) % sistema compensado en lazo cerrado
+sis=feedback(g,1); % sistema sin compensador en lazo cerrado
 figure
 step(cl,'k')
 hold on
@@ -57,7 +57,7 @@ K_c=R4*C1/(R3*C2);
 z=1/(R1*C1);
 p=1/(R2*C2);
 Gc=tf(K_c*[1 z],[1 p]);
-s_con=feedback(Gc*g,1);
+s_con=feedback(Gc*g,1)
 figure
 step(s_con,'k')
 hold on
@@ -89,8 +89,8 @@ K=1/div;
 %---------encontrando la ganancia----
 
 sc=K*ol; % sistema completo en lazo abierto
-cl=feedback(sc,1); % sistema compensado en lazo cerrado
-sis=feedback(g,1) % sistema sin compensador en lazo cerrado
+cl=feedback(sc,1) % sistema compensado en lazo cerrado
+sis=feedback(g,1); % sistema sin compensador en lazo cerrado
 figure
 step(cl,'k')
 hold on

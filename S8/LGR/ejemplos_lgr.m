@@ -21,3 +21,30 @@ rlocus(f)
 title('LGR de $F(s)=\frac{s^2+2s+4}{s(s+4)(s+6)(s^2+1.4s+1)}$','Interpreter','latex')
 xlim([-10 2]);
 ylim([-5 5]);
+
+
+%--------otros ejemplos-------
+a=[1 1];
+b=[1 3];
+c=[1 4];
+den= conv(a,b);
+den = conv(den,c);
+h=tf(1,den);
+figure
+subplot(4,3,1)
+rlocus(h);
+
+den=conv([1 1-2*i],[1 1+2*i]);
+h=tf([1 0.5],den);
+subplot(4,3,7)
+rlocus(h);
+
+
+den=conv([1 1],[1 0]); %(s+1)(s)
+num=conv([1 2],[1 3]); %(s+2)(s+3) 
+h=tf(num,den);
+subplot(4,3,12)
+rlocus(h);
+
+
+
