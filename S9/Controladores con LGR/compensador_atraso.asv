@@ -29,7 +29,7 @@ pol = conv([1 -s1],[1 -s2])
 wn=sqrt(pol(3))
 e=pol(2)/(2*wn)
 
-sis_d=tf(wn^2,pol); %sistema deseado
+sis_d=tf(wn^2,[]
 
 
 so = 100*exp(-e*pi/sqrt(1-e^2))
@@ -88,12 +88,9 @@ figure
 step(gr,'b')
 hold on
 step(sis_r_c,'k')
-%step(sis_d,'r')
 title('Respuesta al escalon')
 legend('Sistema no compensado', 'Sistema compensado')
-%legend('Sistema no compensado', 'Sistema compensado','Sistema deseado')
-figure
-pzmap(sis_r_c)
+
 
 %---------implementación de Gc con operacioneales----
 %Gc=K(s+z)/(s+p)
