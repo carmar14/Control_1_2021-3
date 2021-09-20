@@ -22,8 +22,8 @@ step(sis_d)
 legend('Sistema sin compensador','Respuesta deseada')
 
 %--------angulo faltante------
-t1=90+atand(2.5/4.3301);
-t2=90+atand(2/4.3301);
+t1=90+atand(2.5/4.33);
+t2=90+atand(2/4.33);
 t1+t2
 af=-180+t1+t2
 %angulo del cero para el adelanto
@@ -64,6 +64,10 @@ step(s_c,'k')
 
 figure
 rlocus(g_c*g)
+
+figure
+pzmap(s_c)
+
 
 %-----------amplificadores operacionales
 z1=0.5;
