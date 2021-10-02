@@ -16,13 +16,15 @@ g1=K*g;
 figure
 margin(g1)
 
+%---------se encuentra a------
+a=(1-sind(37))/(1+sind(37));%0.25;
 %-------se encuentra la nueva frecuencia de cruce de ganancia---
 w=roots([1 0 4 0 -80^2]);
 w=8.83;
 
 %-------a partir de w se encuentra la ubicacion del cero y el polo--
 %---G_c(s)=Kc*(s+z)/(s+p)---> z=1/T, p=-1/(aT)   z=w
-a=0.25;
+
 T=1/(w*sqrt(a));
 z=1/T;
 p=1/(T*a);
@@ -44,5 +46,8 @@ hold on
 step(g_cl,'b')
 legend('compensado','no compensado')
 
+
+figure
+pzmap(s_comp_clo)
 
 
