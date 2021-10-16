@@ -35,6 +35,7 @@ step(g_cl,'b');
 hold on
 step(g_d,'r')
 legend('Compensado','Deseado')
+title('Control PI $G(s)=\frac{1}{s^2+48s+5}$','interpreter','latex')
 %-----------control PI----------
 
 % 
@@ -53,14 +54,14 @@ step(g_cl,'b');
 hold on
 step(g_d,'r')
 legend('Compensado','Deseado')
+title('Control PID $G(s)=\frac{1}{s^2+3s+5}$','interpreter','latex')
+
 %----------control PID----------
 % 
 % %----------control PD----------
 g=tf(4,[1 -6 0])
 
 g_d=tf(3,[1 1 3]);
-figure
-step(g_d,'r')
 %legend('Sin compensar','Deseado')
 [P Z]=pzmap(g_d)
 
@@ -76,11 +77,13 @@ step(g_cl,'b');
 hold on
 step(g_d,'r')
 legend('Compensado','Deseado')
+title('Control PD $G(s)=\frac{4}{s(s-6)}$','interpreter','latex')
+
 
 %----------control PID----------
 Kp=53/4;
 Ti=4*Kp/150;
-Td=(51+4)/(4*Kp);
+Td=(51+6)/(4*Kp);
 g_c=tf([Kp*Ti*Td Kp*Ti Kp],[Ti 0]);
 
 g_ol=g_c*g;
@@ -91,6 +94,8 @@ step(g_cl,'b');
 hold on
 step(g_d,'r')
 legend('Compensado','Deseado')
+title('Control PID $G(s)=\frac{4}{s(s-6)}$','interpreter','latex')
+
 % %----------control PID----------
 
 
