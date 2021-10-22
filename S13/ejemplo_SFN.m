@@ -2,38 +2,30 @@ clc
 close all
 clear
 
-clc
-close all
-clear
-
-%proceso
-den=conv([1 50],[1 51]);
-den=conv(den,[1 0]);
-g=tf(50,den);
+%-------proceso----
+g=tf([1 -1],[1 2]);
 step(g,'k')
 g_cl=feedback(g,1);
 hold on
 
 %deseado
-Ts=1;
-so=13/100;
-e=sqrt((log(so))^2/(pi^2+(log(so))^2));
-wn=4/(Ts*e);
-g_d=tf(wn^2,[1 2*e*wn wn^2]);
+Ts=0.5;
+tao=Ts/4;
+
+g_d=tf(1,[tao 1]);
 hold on
 step(g_cl,'b')
 step(g_d,'r')
 legend('Sin compensar','sin compensar en CL','Deseado')
 [P Z]=pzmap(g_d)
 
-pol_d=[1 2*e*wn wn^2];
-pol_a=conv(pol_d,[1 40]);
+pol_d=[1 1/tao];
+pol_a=conv(pol_d,[1 80]);
 
 %------controlador----
-K_p=373.9-5;
-T_i=K_p/2157.5;
-T_d=(48-3)/K_p;
-g_c=tf([K_p*T_i*T_d K_p*T_i K_p],[T_i 0]);
+K_p=-640;
+T_i=(88-K_p)/(1-88*K_p);
+g_c=tf([K_p*T_i K_p],[T_i 0]);
 
 %--------compensado----
 sis_ol=g_c*g;
