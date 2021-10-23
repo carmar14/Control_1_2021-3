@@ -33,7 +33,7 @@ pol_a=conv(pol_d,[1 300]);
 K_p=(3050-2550)/50;
 T_i=50*K_p/15000;
 T_d=(310-101)/(50*K_p);
-g_c=tf([K_p*T_i*T_d K_p*T_i K_p],[T_i]);  %recordar que el integrador viene de la planta
+g_c=tf([K_p*T_i*T_d K_p*T_i K_p], [T_i]);  %recordar que el integrador viene de la planta
 
 %--------compensado----
 sis_ol=g_c*g;
