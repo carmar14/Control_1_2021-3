@@ -43,8 +43,9 @@ legend('Compensado','Deseado')
 %----------w=ancho de banda en lazo cerrado---
 w=14.3;
 ws=2*14.3;
-Ts=2*pi/ws;
-Ts=1/50;
+Ts=pi/ws; %nyquist
+Ts=1/50;%0.169/10; %empirico
+% Ts=1/50;
 % Ts=1/10;  %1/10 foh
 gc_d=c2d(g_c,Ts,'zoh');
 gp_d=c2d(g,Ts,'zoh');
@@ -105,10 +106,7 @@ for i=1:length(t)
     
     
     ukp2=ukp1;
-    ukp1=ukp;
-    
-    
-    
+    ukp1=ukp;    
     yk2=yk1;
     yk1=yk;    
      

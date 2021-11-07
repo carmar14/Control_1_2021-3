@@ -19,7 +19,7 @@ double uk=0;
 double uk1=0;
 //erro actual e(k)
 double ek=0;
-//error pasad e(k-1)
+//error pasado e(k-1)
 double ek1=0;
 //salida de la planta y(k)
 double yk=0;
@@ -88,7 +88,6 @@ void loop(){
 
   while(1){
     controlador();
-    
     delay(Ts*1000);
     
     }
