@@ -89,8 +89,8 @@ t=0:Ts:4.5;
 for i=1:length(t)
     
 %     yk = 0.001886*ukp + 0.002608*ukp1 + 4.05e-05*ukp2 + 0.9774*yk1 - 2.632e-05*yk2; % FOH y nyquist
-    yk = 0.0001488*ukp1 + 0.0001083*ukp2 + 1.382*yk1 - 0.3829*yk2; %zoh
-%     yk = 0.0006962*ukp + 0.001286*ukp1 + 7.728e-05*ukp2 + 0.9979*yk1 -0.00823*yk2; %foh
+%     yk=4.287e-05*ukp1 + 3.654e-05*ukp2 + 1.618*yk1 - 0.6188*yk2;
+    yk = 0.0006962*ukp + 0.001286*ukp1 + 7.728e-05*ukp2 + 0.9979*yk1 -0.00823*yk2; %foh
     y = [y yk];
     %calcular el error
     ek = rk - yk;
