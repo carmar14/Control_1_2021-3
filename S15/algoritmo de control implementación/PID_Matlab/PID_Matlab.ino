@@ -21,19 +21,33 @@ double uk1=0;
 double ek=0;
 //error pasad e(k-1)
 double ek1=0;
+//salida de la planta y(k)
+double yk=0;
 
 //referencia
 double rk;
 
+//-----------implementación del controlador-----------
 void controlador(){
-  ledOn = !ledOn;
-
-  digitalWrite(myLed, ledOn); // Led on, off, on, off...
+  //-----------medir la variable del proceso----
+  //-------normalmente mediante un ADC-----
+  yk=Samples;
+  //-------calcular el error actual----
+  ek=rk-yk;
+  //---------calcular acción de control---
+  uk = 605.9*ek - 131.9*ek1 + uk1;
+  //---------actualizo valores-----------
+  uk1=uk;
+  ek1=ek;
+  //-----generar la salida hacia la planta---
+  //-------normalmente mediante un DAC-----
+  Serial.print(uk);
+  Serial.print(',');
+  Serial.print('\n');
 }
 
 void setup(){
-
-
+  Serial.begin(115200);
   Timer3.attachInterrupt(controlador);
   //Timer3.start(50000); // Calls every 50ms
   Timer3.start(219700);
