@@ -40,7 +40,11 @@ legend('Compensado','Deseado')
 
 
 %--------------------discretizar----------------
-Ts=1/10;  %1/10 foh
+%----------w=ancho de banda en lazo cerrado---
+w=14.3;
+ws=2*14.3;
+Ts=2*pi/ws;
+% Ts=1/10;  %1/10 foh
 gc_d=c2d(g_c,Ts,'foh');
 gp_d=c2d(g,Ts,'foh');
 sis_ol_d=gc_d*gp_d;

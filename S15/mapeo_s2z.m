@@ -24,7 +24,7 @@ figure
 % s2=-e(i)*wn(j)-wn(j)*sqrt(e(i)^2-1);   
 % plot(real(s1(i,:)),imag(s1(i,:)),'k',real(s2(i,:)),imag(s2(i,:)),'r')
 %-------line punteada frecuencia natural constante----
-%--------linea constante linea solida------
+%--------zeta constante linea solida------
 for i=1:length(e)
     for j=1:length(wn)
         s1(i,j)=-e(i)*wn(j)+wn(j)*sqrt(e(i)^2-1);
