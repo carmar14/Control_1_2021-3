@@ -29,9 +29,17 @@ double rk;
 
 //-----------implementación del controlador-----------
 void controlador(){
-  //-----------medir la variable del proceso----
-  //-------normalmente mediante un ADC-----
-  yk=Samples;
+  //-----------medir la variable del proceso-------
+  //-------normalmente mediante un ADC-------------
+  //----------aqui se recibirá por Serial-----------
+  //------por efecto de emular la planta en matlab--
+  if(Serial.available()>0){
+      String str = Serial.readStringUntil('\n');
+      yk= str.toFloat();
+      
+    }
+  Serial.println(yk);
+  
   //-------calcular el error actual----
   ek=rk-yk;
   //---------calcular acción de control---
