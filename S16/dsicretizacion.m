@@ -40,7 +40,7 @@ grid on
 
 w=3.48;
 %w=2pi/T------wn=2pi/Ts>2*w (Nyquist)---Ts<pi/w;
-Ts=0.1*pi/w;
+Ts=pi/w;
 gd1=c2d(g,Ts);
 gd2=c2d(g,Ts,'tustin');
 
