@@ -4,8 +4,8 @@ clear
 
 %---------proceso--------
 den=conv([1 1],[1 5]);
-g=tf(1,den);
-%g=tf(1,den,'InputDelay',1);
+%g=tf(1,den);
+g=tf(1,den,'InputDelay',1);
 step(g,'b')
 
 L=1;
